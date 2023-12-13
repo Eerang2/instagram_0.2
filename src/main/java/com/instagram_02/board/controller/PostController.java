@@ -1,8 +1,8 @@
 package com.instagram_02.board.controller;
 
 
-import com.instagram_02.board.Post;
-import com.instagram_02.board.PostRepository;
+import com.instagram_02.board.entity.Post;
+import com.instagram_02.board.service.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

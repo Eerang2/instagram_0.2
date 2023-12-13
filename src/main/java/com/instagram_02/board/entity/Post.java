@@ -1,4 +1,4 @@
-package com.instagram_02.board;
+package com.instagram_02.board.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class Post {
     @Column(nullable = false)
     private String content;
 
-    
+
 
 
 
