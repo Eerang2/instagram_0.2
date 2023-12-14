@@ -40,13 +40,13 @@ public class PostController {
     }
 
     @GetMapping("/update/{id}")
-    public String editForm(@PathVariable("id") Long id, Model model) {
+    public String updateForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("post", postRepository.findById(id).orElse(null));
         return "post/update";
     }
 
     @PostMapping("/update/{id}")
-    public String edit(@PathVariable("id") Long id, @ModelAttribute Post post) {
+    public String update(@PathVariable("id") Long id, @ModelAttribute Post post) {
         post.setId(id);
         postRepository.save(post);
         return "redirect:/posts";

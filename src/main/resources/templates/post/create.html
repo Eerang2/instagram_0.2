@@ -11,8 +11,11 @@
 <body>
 <h1>새 게시물 작성</h1>
 <form th:action="@{'/posts/create'}" method="post" th:object="${post}">
-  <label for="title">제목e:</label>
+  <label for="title">제목:</label>
   <input type="text" id="title" name="title" th:field="*{title}" required>
+  <br>
+  <label for="userId">작성자:</label>
+  <input type="text" id="userID" name="user_id" th:field="*{userId}" required>
   <br>
   <label for="content">내용:</label>
   <textarea id="content" name="content" th:field="*{content}" required></textarea>

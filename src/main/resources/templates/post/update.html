@@ -14,11 +14,14 @@
   <label for="title">제목:</label>
   <input type="text" id="title" name="title" th:field="*{title}" required>
   <br>
+  <label for="userId">작성자:</label>
+  <input type="text" id="userId" name="userId" th:field="*{userId}" required>
+  <br>
   <label for="content">내용:</label>
   <textarea id="content" name="content" th:field="*{content}" required></textarea>
   <br>
   <button type="submit">수정하기</button>
 </form>
-<a th:href="@{'/posts'}">돌아가기</a>
+<a th:href="@{'/posts'}">돌아가자</a>
 </body>
 </html>
