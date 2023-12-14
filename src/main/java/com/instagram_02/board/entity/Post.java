@@ -13,7 +13,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "user_id")
+    @Column(nullable = false, name = "userId")
     private String userId;
 
     @Column(nullable = false, name = "title")
