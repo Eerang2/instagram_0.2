@@ -1,0 +1,24 @@
+logging.level:
+  org.springframework.web.servlet.DispatcherServlet: DEBUG
+  org.springframework.data.elasticsearch: TRACE
+  org.elasticsearch.client.RestClient: TRACE
+  com.zaxxer.hikari.HikariConfig: DEBUG
+  com.zaxxer.hikari: TRACE
+  org.hibernate.SQL: DEBUG
+  org.hibernate.orm.jdbc.bind: TRACE
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/instagram
+    username: root
+    password: 1234
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      generate_statistics: true
+      use_sql_comments: true
+      ddl-auto: none
