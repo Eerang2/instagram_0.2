@@ -13,12 +13,5 @@ spring:
     username: root
     password: 1234
   jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        use_sql_comments: true
     hibernate:
-      generate_statistics: true
-      use_sql_comments: true
-      ddl-auto: none
+      ddl-auto: validate
