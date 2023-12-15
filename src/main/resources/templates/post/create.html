@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>새 게시물 작성</h1>
-<form th:action="@{'/posts/create'}" method="post" th:object="${post}">
+<form th:action="@{'/posts/create'}" method="post" th:object="${postCommand}">
   <label for="title">제목:</label>
   <input type="text" id="title" name="title" th:field="*{title}" required>
   <br>
