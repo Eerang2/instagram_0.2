@@ -14,18 +14,21 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class PostController {
 
-    private final PostRepository postRepository;
+    // controller 는 Service 와 가깝게 Service 는 Repository 와 가깝게 관계를 맺는 것이 이상적
+    // private final PostRepository postRepository;
     private final PostService postService;
 
     @GetMapping
     public String list(Model model) {
-        model.addAttribute("posts", postRepository.findAll());
+        model.addAttribute("posts", postService.findAll());
         return "post/list";
     }
 
     @GetMapping("/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("post", postRepository.findById(id).orElse(null));
+        // orElse null 보단 orElseThrow 나 orElse(Post::new) 가 나음
+        // model.addAttribute("post", postRepository.findById(id).orElse(null));
+        model.addAttribute("post", postService.findById(id));
         return "post/view";
     }
 
@@ -37,13 +40,13 @@ public class PostController {
 
     @PostMapping("/create")
     public String create(@ModelAttribute Post post) {
-        postRepository.save(post);
+        postService.save(post);
         return "redirect:/posts";
     }
 
     @GetMapping("/update/{id}")
     public String updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("post", postRepository.findById(id).orElse(null));
+        model.addAttribute("post",  postService.findById(id));
         return "post/update";
     }
 
@@ -55,7 +58,7 @@ public class PostController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
-        postRepository.deleteById(id);
+        postService.deleteById(id);
         return "redirect:/posts";
     }
 }
