@@ -1,6 +1,7 @@
 package com.instagram_02.board.controller;
 
 
+import com.instagram_02.board.command.PostCommand;
 import com.instagram_02.board.entity.Post;
 import com.instagram_02.board.repository.PostRepository;
 import com.instagram_02.board.service.PostService;
@@ -34,13 +35,13 @@ public class PostController {
 
     @GetMapping("/create")
     public String createForm(Model model) {
-        model.addAttribute("post", new Post());
+        model.addAttribute("postCommand", new PostCommand());
         return "post/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Post post) {
-        postService.save(post);
+    public String create(@ModelAttribute PostCommand postCommand) {
+        postService.save(postCommand.toEntity());
         return "redirect:/posts";
     }
 
