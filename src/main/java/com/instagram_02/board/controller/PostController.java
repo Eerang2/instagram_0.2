@@ -2,18 +2,20 @@ package com.instagram_02.board.controller;
 
 
 import com.instagram_02.board.entity.Post;
-import com.instagram_02.board.service.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.instagram_02.board.repository.PostRepository;
+import com.instagram_02.board.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/posts")
+@RequiredArgsConstructor
 public class PostController {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+    private final PostService postService;
 
     @GetMapping
     public String list(Model model) {
@@ -47,8 +49,7 @@ public class PostController {
 
     @PostMapping("/update/{id}")
     public String update(@PathVariable("id") Long id, @ModelAttribute Post post) {
-        post.setId(id);
-        postRepository.save(post);
+        postService.update(id, post);
         return "redirect:/posts";
     }
 
@@ -57,5 +58,4 @@ public class PostController {
         postRepository.deleteById(id);
         return "redirect:/posts";
     }
-
 }
